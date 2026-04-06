@@ -37,10 +37,6 @@ db.add("score", 5); // 15
 db.add("score", -3); // 12
 ```
 
-## Why synchronous?
-
-QDB uses Bun's native `bun:sqlite` driver, which is synchronous by design. Since SQLite operates on a local file with no network round-trips, synchronous calls are extremely fast and avoid the complexity of promises or callbacks. This keeps the API simple and predictable — no `await` needed.
-
 ## API
 
 | Method | Signature | Description |
@@ -51,5 +47,10 @@ QDB uses Bun's native `bun:sqlite` driver, which is synchronous by design. Since
 | **has** | `db.has(path): boolean` | Returns `true` if a value exists at the given path. |
 | **delete** | `db.delete(path): boolean` | Deletes the value at the given path. Returns `true` if something was removed. |
 | **add** | `db.add(path, amount): number` | Adds `amount` to the numeric value at the path. Initializes to `0` if the key doesn't exist. |
+
+
+## Why synchronous?
+
+QDB uses Bun's native `bun:sqlite` driver, which is synchronous by design. Since SQLite operates on a local file with no network round-trips, synchronous calls are extremely fast and avoid the complexity of promises or callbacks. This keeps the API simple and predictable — no `await` needed.
 
 > More methods will be added over time to progressively match the [Quick.db](https://github.com/plazzmo/quick.db) API.
